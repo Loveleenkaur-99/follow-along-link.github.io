@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-	<script  src="link.js"></script>
 	<style>
 	body{
   background-color: grey;
@@ -58,7 +57,28 @@ font-size: 20px;
                                 </ul>
                                 <div class="wrapper">
                             <p>The irresistible aroma of <a href="">Indian</a>spices greets you as you enter Namaste India, a hidden gem centrally located in the heart of <a href="">Chinatown</a>. One of the nicest Indian restaurants in Canada, the spacious and well-decorated place is sure to win your heart with the delicious food and warm hospitality. All dishes are <a href="">spot</a> on, prepared with fresh ingredients and spices to give you a taste of rich Indian flavours. The lovely atmosphere and impeccable <a href="">service</a>a are winners all the way, along with a superb range of vegetarian, vegan and <a href="">non-vegetarian</a> options to suit all palates. Their sumptuous lunch and dinner buffet is highly recommended.</p></div>
+<script>
+	const triggers = document.querySelectorAll('a');
+	const highlight = document.createElement('span');
+	highlight.classList.add('highlight');
+	document.body.append(highlight);
 
+	 function highLightLink(){
+	 	const linkCoords = this.getBoundingClientRect();
+	 	console.log(linkCoords);
+	 	const coords = {
+	 		width: linkCoords.width,
+	 		height: linkCoords.height,
+	 		top: linkCoords.top+window.scrollY,
+	 		left: linkCoords.left+window.scrollX
+	 	};
+	 	highlight.style.width = `${coords.width}px`;
+	 	highlight.style.height = `${coords.height}px`;
+	 	highlight.style.transform = `translate(${coords.left}px , ${coords.top}px)`;
+	 }
+	 
+	 triggers.forEach(a => a.addEventListener('mouseenter',highLightLink));
+	</script>
                             </body>
                 
                             </html>
